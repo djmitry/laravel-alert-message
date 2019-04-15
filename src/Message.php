@@ -8,16 +8,17 @@ class Message
 {
     const SUCCESS_TYPE = 'success';
 
-    public function add(Request $request, string $message, string $type = SUCCESS_TYPE) 
+    public static function add(string $message, string $type = self::SUCCESS_TYPE) 
     {
-        $data = $request->session()->get('alert-messages');
+        $data = request()->session()->get('alert-messages');
         $data[] = compact('type', 'message');
-        $request->session()->flash('alert-messages', $data);
+        request()->session()->flash('alert-messages', $data);
     }
 
-    public function show() 
+    public static function show() 
     {
-        $data = $request->session()->get('alert-messages');
-        dd($data);
+        $data = request()->session()->get('alert-messages');
+        print_r($data);
+        echo view('Message::message');
     }
 }
