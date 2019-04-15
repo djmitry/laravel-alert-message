@@ -1,0 +1,14 @@
+{
+    "name": "djmitry/laravel-alert-message",
+    "description": "Create message for notify",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dmitry Zagainov",
+            "email": "d.i.ma.92@mail.ru"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
