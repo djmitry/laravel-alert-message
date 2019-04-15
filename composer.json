@@ -15,5 +15,12 @@
         "psr-4": {
             "Djmitry\\Message\\": "src"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Djmitry\\Message\\MessageServiceProvider"
+            ]
+        }
     }
 }
