@@ -1,6 +1,6 @@
 <?php
 
-namespace Djmitry\Widgets;
+namespace Djmitry\Message;
 
 use Illuminate\Support\ServiceProvider;
 use App;

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 class Message
 {
     const SUCCESS_TYPE = 'success';
+    const ERROR_TYPE = 'danger';
 
     public static function add(string $message, string $type = self::SUCCESS_TYPE) 
     {
@@ -18,7 +19,9 @@ class Message
     public static function show() 
     {
         $data = request()->session()->get('alert-messages');
-        print_r($data);
-        echo view('Message::message');
+
+        if ($data) {
+            echo view('Message::message', ['messages' => $data]);
+        }
     }
 }
