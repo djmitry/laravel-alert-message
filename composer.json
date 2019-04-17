@@ -16,6 +16,11 @@
             "Djmitry\\Message\\": "src"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Djmitry\\Message\\Tests\\": "tests"
+        }
+    },
     "extra": {
         "laravel": {
             "providers": [
