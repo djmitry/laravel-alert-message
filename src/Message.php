@@ -23,5 +23,6 @@ class Message
         if ($data) {
             echo view('Message::message', ['messages' => $data]);
         }
+        return true;
     }
 }

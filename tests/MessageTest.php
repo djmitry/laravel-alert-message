@@ -2,18 +2,36 @@
 
 namespace Djmitry\Message\Tests;
 
-use Tests\DuskTestCase;
-use Laravel\Dusk\Browser;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Tests\TestCase;
+use Djmitry\Message\Message;
+use Illuminate\Support\Facades\Auth;
 
-class MessageTest extends DuskTestCase
+class MessageTest extends TestCase
 {
-    public function testFrontend()
+    public function testHasElement()
     {
-        $this->browse(function (Browser $browser) {
-            $browser->visit('/')
-                ->screenshot('Главная')
-                ->assertSee('Мои работы');
-        });
+        $this->withSession(['1'])->get('/');
+        Message::add('test');
+        $data = request()->session()->get('alert-messages');
+        $result = (bool) count($data);
+        $this->assertTrue($result);
+    }
+
+    public function testHasTwoElements()
+    {
+        $this->withSession(['1'])->get('/');
+        Message::add('test');
+        Message::add('test2');
+        $data = request()->session()->get('alert-messages');
+        $result = count($data);
+        $this->assertTrue($result === 2);
+    }
+
+    public function testShow()
+    {
+        $this->withSession(['1'])->get('/');
+        Message::add('test');
+        $result = Message::show();
+        $this->assertTrue($result);
     }
 }
